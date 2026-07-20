@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,243 +19,482 @@
         </style>
     @endif
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-  <style>
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family: Inter, sans-serif;
-      background:#f8fafc;
-    }
-  </style>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Kalam&display=swap" rel="stylesheet"> -->
+    <style>
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #384862 0%, #483527 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(56, 72, 98, 0.8) 0%, rgba(72, 53, 39, 0.8) 100%);
+        }
+        
+        /* Hide scrollbar */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        html {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        .brand-font {
+            font-family: 'Shrikhand', cursive;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 1.1em;
+        }
+        
+        .tagline-font {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            letter-spacing: 0.05em;
+        }
+        
+        @keyframes pulse-slow {
+            0%, 100% {
+                box-shadow: 0 10px 25px rgba(20, 184, 166, 0.5);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(20, 184, 166, 0.8);
+            }
+        }
+        
+        @keyframes gradient-shift {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+        
+        .animate-gradient-shift {
+            animation: gradient-shift 4s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+        
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+        
+        .shimmer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 20%,
+                rgba(255, 255, 255, 0.3) 60%,
+                transparent 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+            border-radius: 50%;
+        }
+    </style>
 </head>
-
-<body class="text-slate-700">
-
-  <!-- ================= Navbar ================= -->
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-      <nav class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
-          <!-- Logo -->
-          <div class="flex items-center gap-3">
-              <img src="{{ asset('favicon.ico') }}" alt="Logo" class="w-11 h-11 flex items-center justify-center shadow-lg">
-
-              <div>
-                  <h1 class="font-bold text-slate-800 text-lg">FacultyEval</h1>
-                  <p class="text-xs text-slate-500">Performance Evaluation System</p>
-              </div>
-          </div>
-
-          <!-- Navigation -->
-          <ul class="hidden md:flex items-center gap-10 font-medium text-slate-600">
-              <li><a href="#features" class="hover:text-blue-600 transition">Features</a></li>
-              <li><a href="#benefits" class="hover:text-blue-600 transition">Benefits</a></li>
-              <li><a href="#contact" class="hover:text-blue-600 transition">Contact</a></li>
-          </ul>
-
-          <!-- Login Button -->
-          <a href="#" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white font-medium shadow-md hover:shadow-xl hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 group">
-              <i class='bx bx-log-in text-xl transition-transform duration-300 group-hover:translate-x-1'></i>
-              <span>Log in</span>
-          </a>
-      </nav>
-  </header>
-
-  <!-- ================= Hero ================= -->
-  <section class="relative overflow-hidden bg-[#F8F7F3] py-10">
-    <!-- Background Blur -->
-    <div class="absolute top-0 left-1/2 w-[600px] h-[600px] -translate-x-1/2 bg-emerald-100 rounded-full blur-[120px] opacity-30"></div>
-
-    <div class="relative max-w-7xl mx-auto px-6 lg:px-6">
-      <div class="grid lg:grid-cols-2 gap-20 items-center">
-          <!-- Left -->
-          <div>
-              <!-- Badge -->
-              <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 bg-white shadow-sm">
-                  <span class="w-2.5 h-2.5 rounded-full bg-green-600"></span>
-                  <span class="text-sm font-medium text-gray-600">Trusted by leading institutions</span>
-              </div>
-
-              <!-- Heading -->
-              <h1 class="mt-8 text-2xl md:text-2xl xl:text-6xl font-extrabold leading-[1.05] tracking-tight text-slate-900">
-                  Evaluate, support,<br>and elevate faculty<br>performance
-              </h1>
-
-              <!-- Description -->
-              <p class="mt-8 max-w-xl text-xl leading-9 text-slate-500">
-                  A modern, reliable platform designed to simplify
-                  performance evaluations, protect confidential
-                  feedback, and provide actionable insights that
-                  help educators grow.
-              </p>
-
-              <!-- Buttons -->
-              <div class="mt-10 flex flex-wrap gap-4">
-                  <a href="#" class="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-green-600 text-white font-semibold shadow-lg hover:bg-green-700 hover:-translate-y-1 transition duration-300">
-                      Request a demo
-                      <i class='bx bx-right-arrow-alt text-xl transition-transform group-hover:translate-x-1'></i>
-                  </a>
-
-                  <a href="#" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl border border-gray-300 bg-white text-slate-700 font-semibold shadow hover:shadow-lg hover:-translate-y-1 transition duration-300">
-                      Learn more
-                  </a>
-              </div>
-
-              <!-- Bottom Features -->
-              <div class="flex flex-wrap gap-8 mt-10">
-                  <div class="flex items-center gap-2 text-slate-500">
-                      <i class='bx bx-shield-quarter text-green-600 text-xl'></i>
-                      <span class="font-medium">Secure & confidential</span>
-                  </div>
-
-                  <div class="flex items-center gap-2 text-slate-500">
-                      <i class='bx bx-check-square text-green-600 text-xl'></i>
-                      <span class="font-medium">Easy to use</span>
-                  </div>
-              </div>
-          </div>
-
-          <!-- Right -->
-          <div class="relative">
-              <div class="rounded-3xl overflow-hidden shadow-2xl border border-white bg-white">
-                <img src="{{ asset('hero-education.jpg') }}" alt="Faculty Evaluation Dashboard" class="w-full h-full object-cover">
-              </div>
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= Features ================= -->
-  <section class="py-24 bg-white">
-
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-      <div class="text-center">
-
-        <span class="text-blue-600 font-semibold uppercase tracking-wider">
-          Key Features
-        </span>
-
-        <h2 class="mt-3 text-4xl font-bold text-slate-900">
-          Everything You Need for Effective Faculty Evaluation
-        </h2>
-
-        <p class="mt-5 text-slate-500 max-w-2xl mx-auto">
-          Built to simplify evaluation workflows while providing meaningful
-          insights that encourage professional growth and teaching excellence.
-        </p>
-
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-
-        <div class="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition">
-
-          <div
-            class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center">
-            <i class='bx bx-file text-blue-600 text-3xl'></i>
-          </div>
-
-          <h3 class="mt-6 text-xl font-semibold">
-            Easy Evaluations
-          </h3>
-
-          <p class="mt-3 text-slate-500">
-            Simple and accessible forms for a smooth evaluation experience.
-          </p>
-
+<body class="bg-blue-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-md z-50 border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="../assets/blue_iris_logo.png" alt="Blue Iris Coffee Logo" class="w-10 h-10 rounded-full border-2 border-white shadow-lg">
+                    <div>
+                        <h1 class="text-xl font-bold text-white brand-font">BLUE IRIS CUP</h1>
+                        <p class="text-xs text-white/80 tagline-font">I came, I saw, I Coffee'd</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#features" class="text-white/90 hover:text-white transition-colors">Features</a>
+                    <a href="#about" class="text-white/90 hover:text-white transition-colors">About</a>
+                    <button onclick="goToLoginPage()" class="bg-white text-[#384862] hover:bg-opacity-90 px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105">
+                        <i class='bx bx-log-in-circle mr-2'></i>Log In
+                    </button>
+                </div>
+            </div>
         </div>
-
-        <div class="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition">
-
-          <div
-            class="w-16 h-16 rounded-2xl bg-cyan-100 flex items-center justify-center">
-            <i class='bx bx-bar-chart-square text-cyan-600 text-3xl'></i>
-          </div>
-
-          <h3 class="mt-6 text-xl font-semibold">
-            Smart Reports
-          </h3>
-
-          <p class="mt-3 text-slate-500">
-            Visual reports and analytics help identify strengths and opportunities.
-          </p>
-
+    </nav>
+    
+    <!-- Fullscreen Video Hero Section -->
+    <section id="video" class="relative h-screen overflow-hidden">
+        <video 
+            src="../assets/FINAL_withCredits.mov" 
+            autoplay
+            muted
+            loop 
+            playsinline
+            class="absolute inset-0 w-full h-full object-cover"
+        ></video>
+        
+        <!-- Overlay -->
+        <div class="hero-overlay absolute"></div>
+        
+        <!-- Video Controls -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+            <button id="muteToggle" onclick="toggleMute()" class="bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-full hover:bg-white/30 transition-all duration-300 flex items-center space-x-2 group">
+                <i id="muteIcon" class='bx bx-volume-mute text-xl'></i>
+                <span id="muteText" class="text-sm font-medium">Unmute?</span>
+                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Press <kbd class="bg-gray-700 px-1 rounded">Ctrl</kbd> + <kbd class="bg-gray-700 px-1 rounded">M</kbd> to toggle
+                </div>
+            </button>
         </div>
-
-        <div class="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition">
-
-          <div
-            class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center">
-            <i class='bx bx-shield-quarter text-emerald-600 text-3xl'></i>
-          </div>
-
-          <h3 class="mt-6 text-xl font-semibold">
-            Secure Feedback
-          </h3>
-
-          <p class="mt-3 text-slate-500">
-            Protect evaluator privacy with confidential submissions.
-          </p>
-
+    </section>
+    
+    <!-- Hero Section -->
+    <section id="heros" class="pt-16 min-h-screen flex items-center relative overflow-hidden bg-linear-to-br from-[#384862] to-[#483527]">
+        <!-- Background decoration -->
+        <div class="absolute top-20 right-10 w-72 h-72 bg-white/10 rounded-full opacity-20 animate-float z-0"></div>
+        <div class="absolute bottom-20 left-10 w-48 h-48 bg-white/10 rounded-full opacity-20 animate-float z-0" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center bg-white/20 backdrop-blur-md text-gray-800 px-6 py-3 rounded-full mb-8 shadow-lg border border-white/30">
+                        <i class='bx bx-coffee mr-3 text-[#ffffff] text-xl'></i>
+                        <span class="text-white font-semibold tracking-wide">Modern Coffee Shop Management</span>
+                    </div>
+                    <div class="space-y-6">
+                        <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
+                            Where <span class="text-[#69C5EE] font-extrabold">Efficiency</span> Meets <span class="text-[#69C5EE] font-extrabold">Coffee Service</span>
+                        </h1>
+                        <p class="text-xl text-white/90 leading-relaxed max-w-lg">
+                            Streamline your coffee operations with our intelligent point-of-sale system and self-service KIOSK designed for the modern cafe experience.
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button onclick="goToLoginPage()" class="bg-white text-[#384862] hover:scale-105 hover:shadow-xl px-8 py-4 rounded-xl transition-all duration-300 font-semibold shadow-lg">
+                            <i class='bx bx-rocket mr-3 text-xl'></i>
+                            <span>Get Started</span>
+                        </button>
+                        <a href="#features" class="border-2 border-white text-white hover:bg-white hover:text-[#384862] px-8 py-4 rounded-xl transition-all duration-300 font-semibold">
+                            <i class='bx bx-info-circle mr-3 text-xl'></i>
+                            <span>Learn More</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 mt-16">
+                        <div class="text-center group">
+                            <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">3 Sec</div>
+                            <div class="text-sm text-white/80 font-medium">Avg Transaction Time</div>
+                        </div>
+                        <div class="text-center group">
+                            <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">50+</div>
+                            <div class="text-sm text-white/80 font-medium">Product SKUs</div>
+                        </div>
+                        <div class="text-center group">
+                            <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">24/7</div>
+                            <div class="text-sm text-white/80 font-medium">System Availability</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-linear-to-br from-[#384862]/20 to-[#483527]/20 rounded-3xl"></div>
+                    <img src="../assets/hero_background.png" alt="Coffee Shop Management" class="relative rounded-2xl shadow-2xl w-full max-w-lg mx-auto group-hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
         </div>
-
-        <div class="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition">
-
-          <div
-            class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center">
-            <i class='bx bx-medal text-purple-600 text-3xl'></i>
-          </div>
-
-          <h3 class="mt-6 text-xl font-semibold">
-            Continuous Growth
-          </h3>
-
-          <p class="mt-3 text-slate-500">
-            Track progress and support faculty development with measurable outcomes.
-          </p>
-
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Powerful Features</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Everything you need to run your coffee shop efficiently</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-cart text-3xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Point of Sale</h3>
+                    <p class="text-gray-600">Fast and intuitive POS interface for quick order processing and payment handling.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border-2 border-teal-500 relative overflow-hidden animate-pulse-slow">
+                    <div class="absolute inset-0 bg-linear-to-r from-teal-400/10 to-cyan-400/10 animate-gradient-shift"></div>
+                    <div class="relative z-10">
+                    <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-desktop text-3xl text-teal-600'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">KIOSK</h3>
+                    <p class="text-gray-600">Self-service kiosk system for customer ordering and payment processing.</p>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-box text-3xl text-green-600'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Product Management</h3>
+                    <p class="text-gray-600">Comprehensive product catalog management with categories, pricing, and descriptions.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-chart text-3xl text-purple-600'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Analytics & Reports</h3>
+                    <p class="text-gray-600">Comprehensive sales reports, customer insights, and business analytics.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-receipt text-3xl text-red-600'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Receipt Management</h3>
+                    <p class="text-gray-600">Digital and printable receipts with customizable branding and payment details.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-gray-100">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-tachometer text-3xl text-indigo-600'></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Efficient and Reliable</h3>
+                    <p class="text-gray-600">High-performance system with reliable operations and minimal downtime.</p>
+                </div>
+            </div>
         </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ================= CTA ================= -->
-  <section class="py-24">
-
-    <div class="max-w-4xl mx-auto px-6">
-
-      <div
-        class="rounded-3xl bg-gradient-to-r from-blue-600 to-sky-500 text-white p-12 text-center shadow-2xl">
-
-        <h2 class="text-4xl font-bold">
-          Ready to Enhance Faculty Performance?
-        </h2>
-
-        <p class="mt-5 text-blue-100 text-lg">
-          Start building a culture of continuous improvement through reliable,
-          secure, and insightful faculty evaluations.
-        </p>
-
-        <div class="mt-10">
-
-          <a href="#"
-            class="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 rounded-xl font-semibold transition">
-            Get Started Today
-            <i class='bx bx-right-arrow-alt'></i>
-          </a>
-
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">About Blue Iris Coffee</h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        We're passionate about helping coffee shops thrive in the digital age. Our POS system and KIOSK are designed by coffee shop owners, for coffee shop owners.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
+                                <i class='bx bx-check text-xl text-blue-600'></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Built for Coffee Shops</h3>
+                                <p class="text-gray-600">Every feature is specifically designed for the unique needs of coffee businesses.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center shrink-0">
+                                <i class='bx bx-check text-xl text-green-600'></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Easy to Use</h3>
+                                <p class="text-gray-600">Intuitive interface that requires minimal training for your staff.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
+                                <i class='bx bx-check text-xl text-purple-600'></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">24/7 Support</h3>
+                                <p class="text-gray-600">Round-the-clock support to ensure your business never stops running.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="image-container aspect-square bg-linear-to-br from-[#384862] to-[#483527] rounded-3xl shadow-2xl flex items-center justify-center relative">
+                        <img src="../assets/kiosk_background.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-3xl">
+                        <div class="absolute inset-0 bg-black/30 rounded-3xl flex items-center justify-center">
+                            <!-- Logo Section -->
+                            <div class="mb-8">
+                                <div class="shimmer inline-block">
+                                    <img src="../assets/blue_iris_logo.png" alt="Blue Iris Coffee" class="w-32 h-32 mx-auto rounded-2xl shadow-2xl">
+                                </div>
+                            </div>
+                            
+                            <!-- Welcome Message -->
+                            <div class="mb-8 ml-4">
+                                <h1 class="text-5xl font-bold text-white brand-font drop-shadow-lg">Blue Iris Cup</h1>
+                                <p class="text-lg text-gray-200 mt-2 drop-shadow-md">Point of Sale and <br>mini-Kiosk machine</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-10">
+                <div>
+                    <!-- Blue Iris Coffee Section -->
+                    <div class="mb-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="../assets/blue_iris_logo.png" alt="Blue Iris Coffee Logo" class="w-8 h-8 rounded-full">
+                            <h3 class="text-xl font-bold">Blue Iris Cup</h3>
+                        </div>
+                        <p class="text-gray-400">Point of Sale System for coffee shops and cafes.</p>
+                    </div>
+                    
+                    <!-- GCST Section -->
+                    <div>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="../assets/GranbyLogo.png" alt="Granby Logo" class="w-8 h-8 rounded-full">
+                            <h3 class="text-xl font-bold">GCST - Naic, Cavite</h3>
+                        </div>
+                        <p class="text-gray-400">Granby Colleges of Science and Technology</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Go To</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#video" class="hover:text-white transition-colors">Promotional Video</a></li>
+                        <li><a href="#heros" class="hover:text-white transition-colors">Hero Section</a></li>
+                        <li><a href="#features" class="hover:text-white transition-colors">Feature Section</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Section</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Dev. Team</h4>
+                    <div class="grid grid-cols-2 gap-2">
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="https://www.facebook.com/04.deyb.12" target="_blank" class="hover:text-white transition-colors">Malaran, Dave</a></li>
+                            <li><a href="https://www.facebook.com/aa.aranthou" target="_blank" class="hover:text-white transition-colors">Arisgado, Anthony</a></li>
+                            <li><a href="https://www.facebook.com/elmarr.delacruz" target="_blank" class="hover:text-white transition-colors">Dela Cruz, Elmar</a></li>
+                            <li><a href="https://www.facebook.com/2m4j3" target="_blank" class="hover:text-white transition-colors">Sumaylo, Mark Jhone</a></li>
+                            <li><a href="https://www.facebook.com/Jobert.Tumbado" target="_blank" class="hover:text-white transition-colors">Tumbado, Jobert</a></li>
+                            <li><a href="https://www.facebook.com/jkristlerrr" target="_blank" class="hover:text-white transition-colors">Abad, John Kristler</a></li>
+                        </ul>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="https://www.facebook.com/Dones.Jhen" target="_blank" class="hover:text-white transition-colors">Buenviaje, Jhen Isaac</a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=61578974051498" target="_blank" class="hover:text-white transition-colors">Latoja, Jhoanna Mae</a></li>
+                            <li><a href="https://www.facebook.com/roseclaire.gargar" target="_blank" class="hover:text-white transition-colors">Gargar, Rose Claire</a></li>
+                            <li><a href="https://www.facebook.com/tapsawani.argielyn" target="_blank" class="hover:text-white transition-colors">Tapsawani, Argielyn</a></li>
+                            <li><a href="https://www.facebook.com/sheila.maeis.3" target="_blank" class="hover:text-white transition-colors">Denosta, Shiela</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                &copy; 2026 Blue Iris Coffee. Developed by GCST 4th Year BSIT Students.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function goToLoginPage() {
+            window.location.href = './LogInPage.php';
+        }
+        
+        function toggleMute() {
+            const video = document.querySelector('video');
+            const muteIcon = document.getElementById('muteIcon');
+            const muteText = document.getElementById('muteText');
+            
+            if (video.muted) {
+                video.muted = false;
+                muteIcon.className = 'bx bx-volume-full text-xl';
+                muteText.textContent = 'Mute';
+            } else {
+                video.muted = true;
+                muteIcon.className = 'bx bx-volume-mute text-xl';
+                muteText.textContent = 'Unmute?';
+            }
+        }
+        
+        // Keyboard shortcut for mute toggle
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.key.toLowerCase() === 'm') {
+                event.preventDefault();
+                toggleMute();
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
