@@ -48,7 +48,7 @@
           <ul class="hidden md:flex items-center gap-10 font-medium text-slate-600">
               <li><a href="#features" class="hover:text-blue-600 transition">Features</a></li>
               <li><a href="#benefits" class="hover:text-blue-600 transition">Benefits</a></li>
-              <li><a href="#contact" class="hover:text-blue-600 transition">Contact</a></li>
+              <li><a href="#cta" class="hover:text-blue-600 transition">Contact</a></li>
           </ul>
 
           <!-- Login Button -->
@@ -124,12 +124,9 @@
   </section>
 
   <!-- ================= Features ================= -->
-  <section class="py-24 bg-white">
-
+  <section id="features" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
       <div class="text-center">
-
         <span class="text-blue-600 font-semibold uppercase tracking-wider">
           Key Features
         </span>
@@ -142,93 +139,128 @@
           Built to simplify evaluation workflows while providing meaningful
           insights that encourage professional growth and teaching excellence.
         </p>
-
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-
+      
         <div class="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition">
-
-          <div
-            class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center">
+          <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center">
             <i class='bx bx-file text-blue-600 text-3xl'></i>
           </div>
-
-          <h3 class="mt-6 text-xl font-semibold">
-            Easy Evaluations
-          </h3>
-
-          <p class="mt-3 text-slate-500">
-            Simple and accessible forms for a smooth evaluation experience.
-          </p>
-
+          <h3 class="mt-6 text-xl font-semibold">Easy Evaluations</h3>
+          <p class="mt-3 text-slate-500">Simple and accessible forms for a smooth evaluation experience.</p>
         </div>
 
         <div class="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition">
-
-          <div
-            class="w-16 h-16 rounded-2xl bg-cyan-100 flex items-center justify-center">
+          <div class="w-16 h-16 rounded-2xl bg-cyan-100 flex items-center justify-center">
             <i class='bx bx-bar-chart-square text-cyan-600 text-3xl'></i>
           </div>
-
-          <h3 class="mt-6 text-xl font-semibold">
-            Smart Reports
-          </h3>
-
-          <p class="mt-3 text-slate-500">
-            Visual reports and analytics help identify strengths and opportunities.
-          </p>
-
+          <h3 class="mt-6 text-xl font-semibold">Smart Reports</h3>
+          <p class="mt-3 text-slate-500">Visual reports and analytics help identify strengths and opportunities.</p>
         </div>
 
         <div class="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition">
-
-          <div
-            class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center">
             <i class='bx bx-shield-quarter text-emerald-600 text-3xl'></i>
           </div>
-
-          <h3 class="mt-6 text-xl font-semibold">
-            Secure Feedback
-          </h3>
-
-          <p class="mt-3 text-slate-500">
-            Protect evaluator privacy with confidential submissions.
-          </p>
-
+          <h3 class="mt-6 text-xl font-semibold">Secure Feedback</h3>
+          <p class="mt-3 text-slate-500">Protect evaluator privacy with confidential submissions.</p>
         </div>
 
         <div class="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition">
-
-          <div
-            class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center">
+          <div class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center">
             <i class='bx bx-medal text-purple-600 text-3xl'></i>
           </div>
-
-          <h3 class="mt-6 text-xl font-semibold">
-            Continuous Growth
-          </h3>
-
-          <p class="mt-3 text-slate-500">
-            Track progress and support faculty development with measurable outcomes.
-          </p>
-
+          <h3 class="mt-6 text-xl font-semibold">Continuous Growth</h3>
+          <p class="mt-3 text-slate-500">Track progress and support faculty development with measurable outcomes.</p>
         </div>
-
+        
       </div>
-
     </div>
+  </section>
+  
+  <!-- Benefits Section -->
+  <section id="benefits" class="py-20 bg-[#F8F7F3]">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="bg-[#F4F1E8] rounded-[2rem] p-10 lg:p-14">
+              <div class="grid lg:grid-cols-2 gap-16 items-center">
+                  <!-- Left Content -->
+                  <div>
+                      <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
+                          Designed for institutions that
+                          care about growth
+                      </h2>
+                      <p class="mt-6 text-lg leading-9 text-slate-500 max-w-xl">
+                          Our platform helps schools, colleges, and universities
+                          create a culture of continuous improvement where faculty
+                          feel supported, not scrutinized.
+                      </p>
+                      <a href="#"class="group inline-flex items-center gap-2 mt-10 px-8 py-4 rounded-2xl
+                          bg-blue-600 text-white font-semibold
+                          hover:bg-blue-700 hover:-translate-y-1
+                          shadow-lg transition-all duration-300">
 
+                          See how it works
+
+                          <i class='bx bx-right-arrow-alt text-xl transition-transform duration-300 group-hover:translate-x-1'></i>
+                      </a>
+                  </div>
+
+                  <!-- Right Content -->
+                  <div class="space-y-8">
+                      <div class="flex items-start gap-4">
+                          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                              <i class='bx bx-check text-green-600 text-xl'></i>
+                          </div>
+
+                          <p class="text-lg text-slate-700 leading-8">
+                              Improve teaching quality with structured,
+                              timely feedback
+                          </p>
+                      </div>
+
+                      <div class="flex items-start gap-4">
+                          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                              <i class='bx bx-check text-green-600 text-xl'></i>
+                          </div>
+
+                          <p class="text-lg text-slate-700 leading-8">
+                              Reduce administrative burden through automated
+                              evaluation cycles
+                          </p>
+                      </div>
+
+                      <div class="flex items-start gap-4">
+                          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                              <i class='bx bx-check text-green-600 text-xl'></i>
+                          </div>
+
+                          <p class="text-lg text-slate-700 leading-8">
+                              Build trust with transparent and fair
+                              review processes
+                          </p>
+                      </div>
+
+                      <div class="flex items-start gap-4">
+                          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                              <i class='bx bx-check text-green-600 text-xl'></i>
+                          </div>
+
+                          <p class="text-lg text-slate-700 leading-8">
+                              Support professional development with
+                              personalized insights
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </section>
 
   <!-- ================= CTA ================= -->
-  <section class="py-24">
-
+  <section id="cta" class="py-24">
     <div class="max-w-4xl mx-auto px-6">
-
-      <div
-        class="rounded-3xl bg-gradient-to-r from-blue-600 to-sky-500 text-white p-12 text-center shadow-2xl">
-
+      <div class="rounded-3xl bg-linear-to-r from-blue-600 to-sky-500 text-white p-12 text-center shadow-2xl">
         <h2 class="text-4xl font-bold">
           Ready to Enhance Faculty Performance?
         </h2>
@@ -239,20 +271,22 @@
         </p>
 
         <div class="mt-10">
-
-          <a href="#"
-            class="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 rounded-xl font-semibold transition">
+          <a href="#" class="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 rounded-xl font-semibold transition">
             Get Started Today
             <i class='bx bx-right-arrow-alt'></i>
           </a>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
+  
+  <!-- ================= Footer ================= -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="text-center text-gray-400">
+        &copy; 2026 Faculty Performance Evaluation System. Developed by
+        <a href="https://davemalaran.vercel.app" target="_blank" class="text-blue-400 hover:text-blue-300">DAVE MALARAN</a>
+    </div>
+  </footer>
 
 </body>
 </html>
